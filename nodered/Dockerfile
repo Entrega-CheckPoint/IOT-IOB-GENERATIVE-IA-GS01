@@ -2,8 +2,8 @@ FROM nodered/node-red:latest
 
 USER root
 
-RUN dnf install -y libaio unzip wget && \
-    dnf clean all
+# Atualiza pacotes e instala dependências
+RUN apt-get update && apt-get install -y libaio1 unzip wget && rm -rf /var/lib/apt/lists/*
 
 # Instala o Oracle Instant Client
 RUN mkdir -p /opt/oracle && \
