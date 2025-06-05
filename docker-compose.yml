@@ -13,7 +13,7 @@ services:
     restart: unless-stopped
 
   nodered:
-    image: nodered/node-red
+    build: ./nodered  # em vez de image:
     container_name: nodered
     ports:
       - "1880:1880"
