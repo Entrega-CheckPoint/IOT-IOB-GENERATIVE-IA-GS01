@@ -2,14 +2,13 @@ FROM nodered/node-red:latest
 
 USER root
 
-# Instala dependência obrigatória
+# Instala dependência
 RUN apk add --no-cache libaio
 
-# Copia a pasta já descompactada
+# Copia o Oracle Client já descompactado
 COPY instantclient_21_11 /opt/oracle/instantclient_21_11
 
-# Configura o Oracle Instant Client
-RUN echo "/opt/oracle/instantclient_21_11" > /etc/ld.so.conf.d/oracle-instantclient.conf && \
-    ldconfig
+# Define variável de ambiente com o path da lib
+ENV LD_LIBRARY_PATH="/opt/oracle/instantclient_21_11"
 
 USER node-red
