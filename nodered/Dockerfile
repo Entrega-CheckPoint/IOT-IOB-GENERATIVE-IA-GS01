@@ -3,7 +3,7 @@ FROM nodered/node-red:latest
 USER root
 
 # Instala dependências necessárias
-RUN apk add --no-cache libaio unzip
+RUN apk add --no-cache libaio unzip libc6-compat
 
 # Copia o arquivo zipado
 COPY instantclient-basic-linux.x64-21.11.0.0.0dbru.zip /opt/oracle/
